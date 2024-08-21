@@ -26,8 +26,7 @@ public class RentAreaServiceImpl implements RentAreaService {
     @Override
     public void addRentArea(BuildingDTO buildingDTO) {
         BuildingEntity buildingEntity = buildingRepository.findById(buildingDTO.getId()).get();
-        rentAreaRepository.deleteBuildingByid(buildingEntity);
-
+        rentAreaRepository.deleteByBuildingId(buildingDTO.getId());
         String[] rentAreas = buildingDTO.getRentArea().trim().split(",");
         for (String area : rentAreas) {
             RentAreaEntity rentAreaEntity = new RentAreaEntity();
@@ -38,10 +37,6 @@ public class RentAreaServiceImpl implements RentAreaService {
         }
     }
 
-    @Override
-    public void deleteByIdIn(List<Long> ids) {
-        rentAreaRepository.deleteByBuildingIdIn(ids);
-        }
 
 
 }

@@ -18,7 +18,7 @@ public class AssignmentBuildingServiceImpl implements AssignmentBuildingService 
     AssignmentBuildingRepository assignmentBuildingRepository;
     @Override
     public void deleteByBuildingIdIn(List<Long> ids) {
-        assignmentBuildingRepository.deleteByBuildingIdIn(ids);
+        assignmentBuildingRepository.deleteByBuilding_IdIn(ids);
         }
 
 

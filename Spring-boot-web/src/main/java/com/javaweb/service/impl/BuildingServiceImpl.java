@@ -6,6 +6,7 @@ import com.javaweb.converter.BuildingDTOConverter;
 import com.javaweb.converter.BuildingSearchBuilderConverter;
 import com.javaweb.entity.AssignmentBuildingEntity;
 import com.javaweb.entity.BuildingEntity;
+import com.javaweb.entity.RentAreaEntity;
 import com.javaweb.entity.UserEntity;
 import com.javaweb.model.dto.AssignmentBuildingDTO;
 import com.javaweb.model.dto.BuildingDTO;
@@ -24,11 +25,13 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Transactional
 @Service
 public class BuildingServiceImpl implements BuildingService {
 
@@ -55,6 +58,7 @@ public class BuildingServiceImpl implements BuildingService {
 
     @Autowired private AssignmentBuildingRepository assignmentBuildingRepository;
 
+    @Autowired private RentAreaRepository rentAreaRepository;
 
     @Override
     public List<BuildingSearchResponse> findAll(Map<String, Object> params, List<String> typeOfCode) {
@@ -70,19 +74,20 @@ public class BuildingServiceImpl implements BuildingService {
     @Override
     public ResponseDTO addOrUpdateBuilding(BuildingDTO buildingDTO) {
         ResponseDTO responseDTO = new ResponseDTO();
-        BuildingEntity buildingEntity = modelMapper.map(buildingDTO, BuildingEntity.class);
+        BuildingEntity buildingEntity = buildingDTOConverter.toBuildingEntity(buildingDTO);
         if(buildingEntity.getId() != null) {
             responseDTO.setMessage("update success");
         } else responseDTO.setMessage("create success");
         buildingRepository.save(buildingEntity);
-        rentAreaService.addRentArea(buildingDTO);
+        List<RentAreaEntity> rentAreaEntities = buildingEntity.getRentareaEntityList();
+        rentAreaRepository.saveAll(rentAreaEntities);
         return responseDTO;
     }
 
     @Override
     public void deleteBuildingById(List<Long> ids) {
-        rentAreaService.deleteByIdIn(ids);
-        assignmentBuildingService.deleteByBuildingIdIn(ids);
+        rentAreaRepository.deleteByBuilding_IdIn(ids);
+        assignmentBuildingRepository.deleteByBuilding_IdIn(ids);
         for(Long id : ids) {
             buildingRepository.deleteById(id);
         }

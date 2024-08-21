@@ -27,7 +27,10 @@ public class BuildingDTOConverter {
         building.setAddress(buildingEntity.getStreet() + ", " + buildingEntity.getWard() + ", " + buildingEntity.getDistrict());
         List<RentAreaEntity> rentAreas = buildingEntity.getRentareaEntityList();
         if(rentAreas != null){
-            String rentArea = rentAreas.stream().map(it->it.toString()).collect(Collectors.joining(", "));
+            String rentArea = rentAreas.stream()
+                    .map(RentAreaEntity::getValue)
+                    .map(String::valueOf) // Chuyển đổi giá trị thành String nếu cần
+                    .collect(Collectors.joining(", "));
             building.setRentArea(rentArea);
         }
 
@@ -63,7 +66,7 @@ public class BuildingDTOConverter {
         }
         building.setTypeCode(typeCodes);
         if(rentAreas != null){
-            String rentArea = rentAreas.stream().map(it -> it.toString()).collect(Collectors.joining(", "));
+            String rentArea = rentAreas.stream().map(it -> String.valueOf(it.getValue())).collect(Collectors.joining(", "));
             building.setRentArea(rentArea);
         }
         return building;

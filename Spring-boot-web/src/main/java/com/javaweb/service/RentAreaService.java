@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface RentAreaService  {
     void addRentArea(BuildingDTO buildingDTO);
-    void deleteByIdIn(List<Long> ids);
 }
