@@ -13,6 +13,9 @@ public enum DistrictCode {
     QUAN_6 ("Quận 6"),
     QUAN_7 ("Quận 7"),
     QUAN_8 ("Quận 8"),
+    QUAN_10("Quận 10"),
+    QUAN_11("Quận 11"),
+    QUAN_TB("Quận Tân Bình");
     ;
 
 

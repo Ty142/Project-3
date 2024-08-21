@@ -114,10 +114,13 @@ public class BuildingEntity extends BaseEntity {
 //            inverseJoinColumns = @JoinColumn(name = "staffid", nullable = false))
 //    private List<UserEntity> Users = new ArrayList<>();
 
+
+    @Override
     public Long getId() {
         return id;
     }
 
+    @Override
     public void setId(Long id) {
         this.id = id;
     }

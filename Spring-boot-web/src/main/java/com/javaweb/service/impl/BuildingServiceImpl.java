@@ -71,7 +71,6 @@ public class BuildingServiceImpl implements BuildingService {
     public ResponseDTO addOrUpdateBuilding(BuildingDTO buildingDTO) {
         ResponseDTO responseDTO = new ResponseDTO();
         BuildingEntity buildingEntity = modelMapper.map(buildingDTO, BuildingEntity.class);
-        Long BuildingId = buildingDTO.getId();
         if(buildingEntity.getId() != null) {
             responseDTO.setMessage("update success");
         } else responseDTO.setMessage("create success");

@@ -189,6 +189,8 @@
                                 </div>
                             </div>
 
+                            <form:input type = "hidden" path="id" class="form-control"/>
+                            
                             <div class="form-group">
                                 <label class="col-xs-3">Tên quản lí</label>
                                 <div class="col-xs-9">
@@ -265,7 +267,7 @@
         if (json[name]==''){
             return alert("Ten toa nha ko duoc thieu")
         }
-        else if(json['typeCode']==''){
+        else if(json['typeCode'] == ""){
             return alert("Loai toa nha ko duoc thieu")
         }
         else{
