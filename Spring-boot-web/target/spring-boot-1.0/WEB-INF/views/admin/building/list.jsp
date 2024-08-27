@@ -92,12 +92,6 @@
                                                         <form:option value="">--Chọn quận--</form:option>
                                                         <form:options items="${districtCode}"></form:options>
                                                     </form:select>
-<%--                                                    <select class="form-control" name="district" id="district">--%>
-<%--                                                        <option value="">Chọn quận</option>--%>
-<%--                                                        <option value="Q1">Quận 1</option>--%>
-<%--                                                        <option value="Q2">Quận 2</option>--%>
-<%--                                                        <option value="Q3">Quận 3</option>--%>
-<%--                                                    </select>--%>
                                                 </div>
                                             </div>
 

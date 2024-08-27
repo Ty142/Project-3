@@ -190,7 +190,7 @@
                             </div>
 
                             <form:input type = "hidden" path="id" class="form-control"/>
-                            
+
                             <div class="form-group">
                                 <label class="col-xs-3">Tên quản lí</label>
                                 <div class="col-xs-9">

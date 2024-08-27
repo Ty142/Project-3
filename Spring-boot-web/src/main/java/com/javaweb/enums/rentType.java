@@ -2,6 +2,7 @@ package com.javaweb.enums;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public enum rentType {
 
@@ -19,7 +20,7 @@ public enum rentType {
     }
 
     public static Map<String, String> typeCode(){
-        Map<String, String> code = new LinkedHashMap<>();
+        Map<String, String> code = new TreeMap<String, String>();
         for(rentType it : rentType.values()){
             code.put(it.toString(), it.getName());
         }

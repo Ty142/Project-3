@@ -30,7 +30,7 @@ public class BuildingDTOConverter {
             String rentArea = rentAreas.stream()
                     .map(RentAreaEntity::getValue)
                     .map(String::valueOf) // Chuyển đổi giá trị thành String nếu cần
-                    .collect(Collectors.joining(", "));
+                    .collect(Collectors.joining(","));
             building.setRentArea(rentArea);
         }
 
@@ -47,7 +47,7 @@ public class BuildingDTOConverter {
 
     public BuildingEntity toBuildingEntity(BuildingDTO buildingDTO) {
         BuildingEntity buildingEntity = modelMapper.map(buildingDTO, BuildingEntity.class);
-        String type = buildingDTO.getTypeCode().stream().map(it->it.toString()).collect(Collectors.joining(", "));
+        String type = buildingDTO.getTypeCode().stream().map(it->it.toString().trim()).collect(Collectors.joining(", "));
         buildingEntity.setType(type);
         buildingEntity.setRentareaEntityList(rentAreaConverter.listRentArea(buildingDTO,buildingEntity));
         return buildingEntity;
@@ -59,7 +59,7 @@ public class BuildingDTOConverter {
         List<RentAreaEntity> rentAreas = buildingEntity.getRentareaEntityList();
         List<String> typeCodes = new ArrayList<>();
         if(buildingEntity.getType() != null){
-            String[] typeCode = buildingEntity.getType().split(",");
+            String[] typeCode = buildingEntity.getType().trim().split(",");
             for(String type : typeCode){
                 typeCodes.add(type);
             }
