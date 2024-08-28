@@ -61,7 +61,7 @@ public class BuildingDTOConverter {
         if(buildingEntity.getType() != null){
             String[] typeCode = buildingEntity.getType().split(",");
             for(String type : typeCode){
-                typeCodes.add(type);
+                typeCodes.add(type.trim());
             }
         }
         building.setTypeCode(typeCodes);
