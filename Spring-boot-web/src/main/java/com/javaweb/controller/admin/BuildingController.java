@@ -13,8 +13,7 @@ import com.javaweb.repository.BuildingRepository;
 import com.javaweb.security.utils.SecurityUtils;
 import com.javaweb.service.BuildingService;
 import com.javaweb.service.IUserService;
-import com.javaweb.utils.BuildingType;
-import com.javaweb.utils.DistrictCode;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -62,7 +61,7 @@ public class BuildingController {
         ModelAndView modelAndView = new ModelAndView("admin/building/edit");
         modelAndView.addObject("building", buildingDTO);
         modelAndView.addObject("districtCode", district.districtCode());
-        modelAndView.addObject("typeCode", rentType.typeCode());
+        modelAndView.addObject("typeCodes", rentType.typeCode());
         return modelAndView;
     }
 
@@ -72,7 +71,7 @@ public class BuildingController {
         BuildingDTO buildingDTO = buildingService.findBuildingById(id);
         mav.addObject("building", buildingDTO);
         mav.addObject("districtCode", district.districtCode());
-        mav.addObject("typeCode", rentType.typeCode());
-        return mav;
+         mav.addObject("typeCodes", rentType.typeCode());
+         return mav;
     }
 }

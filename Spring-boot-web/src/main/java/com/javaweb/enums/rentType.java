@@ -1,8 +1,6 @@
 package com.javaweb.enums;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public enum rentType {
 
@@ -20,10 +18,11 @@ public enum rentType {
     }
 
     public static Map<String, String> typeCode(){
-        Map<String, String> code = new TreeMap<String, String>();
+        Map<String, String> code = new HashMap<>();
         for(rentType it : rentType.values()){
             code.put(it.toString(), it.getName());
         }
         return code;
     }
+
 }

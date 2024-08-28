@@ -59,9 +59,9 @@ public class BuildingDTOConverter {
         List<RentAreaEntity> rentAreas = buildingEntity.getRentareaEntityList();
         List<String> typeCodes = new ArrayList<>();
         if(buildingEntity.getType() != null){
-            String[] typeCode = buildingEntity.getType().trim().split(",");
+            String[] typeCode = buildingEntity.getType().split(",");
             for(String type : typeCode){
-                typeCodes.add(type);
+                typeCodes.add(type.trim());
             }
         }
         building.setTypeCode(typeCodes);
