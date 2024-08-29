@@ -288,6 +288,7 @@
                             <th>Số điện thoại quản lí</th>
                             <th>D.tích sàn</th>
                             <th>D.tích trống</th>
+                            <th>D.tích thuê</th>
                             <th>Giá thuê</th>
                             <th>Phí dịch vụ</th>
                             <th>Phí MG</th>
@@ -312,6 +313,7 @@
                             <td>${it.managerPhone}</td>
                             <td>${it.floorArea}</td>
                             <td>${it.emptyArea}</td>
+                             <td>${it.rentArea}</td>
                             <td>${it.rentPrice}</td>
                             <td>${it.serviceFee}</td>
                             <td>${it.brokerageFee}</td>
