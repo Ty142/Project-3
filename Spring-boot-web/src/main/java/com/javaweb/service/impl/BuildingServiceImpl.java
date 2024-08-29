@@ -43,18 +43,12 @@ public class BuildingServiceImpl implements BuildingService {
 
     @Autowired
     private BuildingDTOConverter buildingDTOConverter;
-
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private RentAreaService rentAreaService;
 
     @Autowired
     AssignmentBuildingService assignmentBuildingService;
-
-    @Autowired
-    private ModelMapper modelMapper;
 
     @Autowired private AssignmentBuildingRepository assignmentBuildingRepository;
 
@@ -75,6 +69,7 @@ public class BuildingServiceImpl implements BuildingService {
     public ResponseDTO addOrUpdateBuilding(BuildingDTO buildingDTO) {
         ResponseDTO responseDTO = new ResponseDTO();
         BuildingEntity buildingEntity = buildingDTOConverter.toBuildingEntity(buildingDTO);
+        rentAreaRepository.deleteByBuildingId(buildingEntity.getId());
         if(buildingEntity.getId() != null) {
             responseDTO.setMessage("update success");
         } else responseDTO.setMessage("create success");

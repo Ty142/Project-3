@@ -55,7 +55,6 @@ public class BuildingDTOConverter {
 
     public BuildingDTO toBuildingDTO(BuildingEntity buildingEntity){
         BuildingDTO building = modelMapper.map(buildingEntity, BuildingDTO.class);
-        building.setDistrict(buildingEntity.getStreet() + ", " + buildingEntity.getWard() + ", " + buildingEntity.getDistrict());
         List<RentAreaEntity> rentAreas = buildingEntity.getRentareaEntityList();
         List<String> typeCodes = new ArrayList<>();
         if(buildingEntity.getType() != null){
